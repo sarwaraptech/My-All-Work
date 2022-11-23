@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container mb-3">    
+        <h1 class="h1 text-center">Book A Ticket</h1>
+            <h2 class="h1 text-center mb-5">Please Fill Your Credentials</h2>
+            <hr> 
+  
+        <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">Name: <span class="text-danger ">*</span></label>
+            <input type="text" class="form-control" id="name">
+         </div>
+         <div class="col-md-6">
+            <label class="form-label">Select Mode: <span class="text-danger ">*</span></label>
+            <select id="mode" class="form-control">
+                <option>---Select Any one----</option>
+                <option>By Bus</option>
+                <option>By Train</option>
+                <option>By Aeroplane</option>
+            </select>
+        </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">No. of Persons: <span class="text-danger ">*</span></label>
+                <select id="persons" class="form-control">
+                    <option>---Select Any one----</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+            <label class="form-label">Phone Number: <span class="text-danger ">*</span></label>
+            <input type="tel" class="form-control" id="phone">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">Email: <span class="text-danger ">*</span></label>
+               <input type="email" class="form-control" id="email">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Address: <span class="text-danger ">*</span></label>
+               <input type="text" class="form-control" id="address">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">Date Of Arrival: <span class="text-danger ">*</span></label>
+               <input type="date" class="form-control" id="arrival">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Date Of Departure: <span class="text-danger ">*</span></label>
+               <input type="date" class="form-control" id="departure">
+               <span id="dateerror" class="text-danger"></span>
+            </div>
+        </div>
+    
+     <div class="row text-center my-5">
+       <div class="col-md-12">
+        <button type="submit" class="btn btn-primary" onclick="Book()">Submit</button>
+       </div>
+        
+     </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <script>
+        var dtToday = new Date();
+        var month = dtToday.getMonth()+1;
+        var day = dtToday.getDay();
+        var year = dtToday.getFullYear();
+        if(month < 20)
+        month = '0' + month.toString();
+        if(day < 20)
+        day = '0' + day.toString();
+        var maxDate = year + '-' + month + '-' +day;
+      $("#arrival").attr('min',maxDate);
+      
+    </script>
+    <script>
+        function Book()
+        {
+            var a =new Date(document.getElementById("arrival").value) ;
+            var d = new Date(document.getElementById("departure").value);
+            if(a<=d)
+            {
+                alert("Booking Done Successfully");
+            }
+            else
+            {
+                document.getElementById("dateerror").innerHTML= d + " Must be greater than or equal to " + a; 
+
+            }
+
+        }
+
+    </script>
+</body>
+</html>

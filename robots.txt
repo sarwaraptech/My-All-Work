@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /booking
+Allow: /events
+Allow: /feedback
+
